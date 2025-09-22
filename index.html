@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Simple with Kama🤍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Tokyo Night Vibe -->
+    <!-- Application Structure Plan: A three-tab SPA ('Learn', 'Practice', 'Create'). This structure organizes the worksheet content into a logical learning flow (instruction -> controlled practice -> creative production), making it more engaging and less overwhelming than a single scrolling page. This task-oriented design transforms the static document into an active learning tool, with the 'Practice' section providing immediate, interactive feedback to reinforce grammar rules effectively. -->
+    <!-- Visualization & Content Choices: 
+        - Warm-up Dialogue -> Goal: Inform -> HTML chat bubbles -> Static display -> Justification: Mimics modern messaging UIs, making the content relatable and visually engaging for a teen audience.
+        - Grammar Rules -> Goal: Inform -> HTML styled cards -> Static display -> Justification: Breaks down complex information into digestible, organized chunks, improving readability and retention.
+        - Fill-in-the-blanks -> Goal: Practice -> Interactive HTML inputs with JS validation -> User types and clicks 'check' -> Justification: Provides immediate feedback, a crucial element for effective self-study and skill reinforcement, turning passive reading into active practice.
+        - Creative Prompts -> Goal: Create -> HTML "challenge cards" and a textarea -> User reads prompts/types in textarea -> Justification: Clearly presents the final, productive tasks in an appealing format, encouraging creative application of the learned grammar.
+        - Library/Method: Vanilla JS for all interactions.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0e7db;
+            color: #3f3cbb;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-button.active {
+            background-color: #fca5a5;
+            color: #fff;
+            box-shadow: 0 6px 8px rgba(252, 165, 165, 0.4);
+        }
+        .section-container {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-bubble {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#f0e7db] flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 w-full max-w-4xl border-2 border-[#ffb3ba] space-y-8">
+        <header class="text-center space-y-2">
+            <h1 class="text-3xl md:text-5xl font-bold text-[#fca5a5]">Past Simple Power-Up!</h1>
+            <p class="text-lg md:text-xl font-medium text-[#7c78d5]">Made for you, Kama🤍</p>
+        </header>
+
+        <nav class="flex justify-around bg-white p-2 rounded-full shadow-inner border-2 border-gray-100">
+            <button id="learn-btn" class="nav-button w-full py-2 px-4 rounded-full text-center text-sm md:text-base font-semibold text-[#7c78d5] bg-white active">
+                1. Learn
+            </button>
+            <button id="practice-btn" class="nav-button w-full py-2 px-4 rounded-full text-center text-sm md:text-base font-semibold text-[#7c78d5] bg-white">
+                2. Practice
+            </button>
+            <button id="create-btn" class="nav-button w-full py-2 px-4 rounded-full text-center text-sm md:text-base font-semibold text-[#7c78d5] bg-white">
+                3. Create
+            </button>
+        </nav>
+
+        <main>
+            <!-- Learn Section -->
+            <section id="learn-section" class="section-container">
+                <div class="space-y-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#fca5a5] text-center mb-6">Let's Get Started!</h2>
+                    
+                    <div class="bg-white p-4 rounded-xl chat-bubble w-fit ml-auto max-w-[80%] border border-gray-200">
+                        <p class="text-sm md:text-base text-gray-700">Hey Kama, what did you do yesterday? 🤪</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl chat-bubble w-fit mr-auto max-w-[80%] border border-gray-200">
+                        <p class="text-sm md:text-base text-gray-700">Yesterday I <span class="font-bold text-[#ff3366]">watch</span> TikTok for 5 hours.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl chat-bubble w-fit ml-auto max-w-[80%] border border-gray-200">
+                        <p class="text-sm md:text-base text-gray-700">Wait, you <span class="font-bold text-[#ff3366]">watched</span> TikTok? 😎</p>
+                    </div>
+
+                    <div class="mt-8 p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl md:text-2xl font-bold text-[#7c78d5] text-center">Past Simple is the Vibe 🕺</h3>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Use it to talk about things that are totally finished in the past. Look at those words! 👇</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-xl border border-gray-200">
+                                <h4 class="font-semibold text-lg text-[#fca5a5]">Affirmative ⚡</h4>
+                                <p class="text-gray-700 text-sm md:text-base">I <span class="font-bold">watched</span> dramas. 📺</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-gray-200">
+                                <h4 class="font-semibold text-lg text-[#fca5a5]">Negative 🚫</h4>
+                                <p class="text-gray-700 text-sm md:text-base">She <span class="font-bold">didn't play</span> volleyball. 🏐</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-gray-200">
+                                <h4 class="font-semibold text-lg text-[#fca5a5]">Question ❓</h4>
+                                <p class="text-gray-700 text-sm md:text-base">Did you <span class="font-bold">listen</span> to Justin Bieber? 🎧</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl md:text-2xl font-bold text-[#7c78d5] text-center">Deeper Dive: Regular vs. Irregular Verbs 🧠</h3>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">Most verbs are easy, but some are totally random! Here's how to remember them:</p>
+                        
+                        <h4 class="font-semibold text-lg text-[#fca5a5]">Regular Verbs: The Easy Ones ✨</h4>
+                        <ul class="list-disc pl-6 text-sm md:text-base text-gray-700 space-y-2">
+                            <li>Add <span class="font-bold">`-ed`</span> to most verbs: <span class="font-semibold text-[#7c78d5]">play -> play<span class="text-green-500">ed</span>, watch -> watch<span class="text-green-500">ed</span></span></li>
+                            <li>If it ends in <span class="font-bold">`-e`</span>, just add <span class="font-bold">`-d`</span>: <span class="font-semibold text-[#7c78d5]">like -> like<span class="text-green-500">d</span></span></li>
+                            <li>If it ends in a consonant + <span class="font-bold">`-y`</span>, change `-y` to `-i` and add <span class="font-bold">`-ed`</span>: <span class="font-semibold text-[#7c78d5]">study -> stud<span class="text-green-500">ied</span></span></li>
+                            <li>If it's a short word with a consonant-vowel-consonant (CVC) pattern, double the last letter and add <span class="font-bold">`-ed`</span>: <span class="font-semibold text-[#7c78d5]">stop -> sto<span class="text-green-500">pp</span><span class="text-green-500">ed</span></span></li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-lg text-[#fca5a5]">Irregular Verbs: The Bosses 👑</h4>
+                        <p class="text-sm md:text-base text-gray-700">These verbs don't follow the rules. You just have to memorize them! Here are a few to get you started:</p>
+                        <ul class="list-disc pl-6 text-sm md:text-base text-gray-700 space-y-2">
+                            <li><span class="font-semibold text-[#7c78d5]">go -> went</span></li>
+                            <li><span class="font-semibold text-[#7c78d5]">do -> did</span></li>
+                            <li><span class="font-semibold text-[#7c78d5]">see -> saw</span></li>
+                            <li><span class="font-semibold text-[#7c78d5]">have -> had</span></li>
+                            <li><span class="font-semibold text-[#7c78d5]">sleep -> slept</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl md:text-2xl font-bold text-[#7c78d5] text-center">Time Expressions: The Clues 🕵️‍♀️</h3>
+                        <p class="text-sm md:text-base text-gray-600 font-medium">These words are like secret codes that tell you to use the Past Simple:</p>
+                        <ul class="list-disc pl-6 text-sm md:text-base text-gray-700 space-y-2">
+                            <li><span class="font-bold">yesterday</span>: I <span class="text-green-500">watched</span> TikTok yesterday.</li>
+                            <li><span class="font-bold">last weekend/month/year</span>: We <span class="text-green-500">played</span> volleyball last weekend.</li>
+                            <li><span class="font-bold">[number] days/weeks/years ago</span>: I <span class="text-green-500">started</span> FLEX prep a few months ago.</li>
+                            <li><span class="font-bold">in [a past year]</span>: She <span class="text-green-500">moved</span> to Tokyo in 2023.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Practice Section -->
+            <section id="practice-section" class="section-container hidden">
+                <div class="space-y-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#fca5a5] text-center mb-6">Fill in the Blanks!</h2>
+                    <p class="text-sm md:text-base text-center text-gray-600 font-medium">Use the words in the brackets to finish the sentences. Think about the form! Regular or irregular? 🧐</p>
+                    <div class="space-y-4 p-4 md:p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] mx-auto max-w-2xl">
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">1. Yesterday I</span>
+                            <input type="text" id="q1" class="w-full px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(watch) a K-drama.">
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">2. She</span>
+                            <input type="text" id="q2" class="w-full px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(not/play) volleyball.">
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">3.</span>
+                            <input type="text" id="q3" class="w-1/2 px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="you">
+                            <input type="text" id="q4" class="w-1/2 px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(listen) to Justin Bieber?">
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">4. We</span>
+                            <input type="text" id="q5" class="w-full px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(not/sleep) late.">
+                        </div>
+                    </div>
+
+                    <div class="mt-8 space-y-4 p-4 md:p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] mx-auto max-w-2xl">
+                        <h3 class="text-xl md:text-2xl font-bold text-[#7c78d5] text-center">More Practice! 💪</h3>
+                        <p class="text-sm md:text-base text-center text-gray-600 font-medium">Let's try a few more. These are a little trickier!</p>
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">5. My mom</span>
+                            <input type="text" id="q6" class="w-full px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(make) dinner.">
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">6. I</span>
+                            <input type="text" id="q7" class="w-full px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(go) to school last week.">
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="font-semibold text-[#7c78d5] min-w-[120px]">7. They</span>
+                            <input type="text" id="q8" class="w-full px-4 py-2 border-2 rounded-xl text-center bg-white text-gray-800 focus:outline-none focus:border-[#ffb3ba]" placeholder="(not/have) any homework.">
+                        </div>
+                    </div>
+
+                    <button id="check-btn" class="mt-4 w-full py-3 px-6 bg-[#fca5a5] text-white font-bold rounded-full shadow-lg hover:bg-[#ff8080] transition-all duration-300">
+                        Check My Answers
+                    </button>
+                    <div id="feedback" class="mt-4 text-center font-semibold text-lg"></div>
+                </div>
+            </section>
+
+            <!-- Create Section -->
+            <section id="create-section" class="section-container hidden">
+                <div class="space-y-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#fca5a5] text-center mb-6">Your Turn to be Creative! ✍️</h2>
+                    
+                    <div class="p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl font-bold text-[#7c78d5]">Writing: "My Yesterday"</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Write 4-5 sentences about what you did yesterday. Don't forget to use Past Simple!</p>
+                        <textarea class="w-full h-32 p-4 rounded-xl border-2 border-gray-300 focus:outline-none focus:border-[#ffb3ba] text-gray-800 placeholder-gray-400" placeholder="Yesterday I..."></textarea>
+                    </div>
+
+                    <div class="p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl font-bold text-[#7c78d5]">Speaking: "Freeze Time Story"</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Tell a funny story: "Yesterday I froze time at school. Suddenly..." What happened next? Say at least 3 sentences!</p>
+                    </div>
+
+                    <div class="p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl font-bold text-[#7c78d5]">TikTok Task: "My Day in 30"</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Make a 30-sec TikTok video telling a story about your yesterday. Use at least 3 Past Simple sentences. Be creative! 🎬</p>
+                    </div>
+                    
+                    <div class="p-6 bg-[#fff6ee] rounded-2xl border-2 border-[#ffb3ba] space-y-4">
+                        <h3 class="text-xl font-bold text-[#7c78d5]">Mini FLEX-Style Interview</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Answer these questions out loud to practice your speaking! 🗣️</p>
+                        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                            <li>What did you do yesterday?</li>
+                            <li>Did you watch a movie last weekend?</li>
+                            <li>Who did you talk to last night?</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const learnBtn = document.getElementById('learn-btn');
+        const practiceBtn = document.getElementById('practice-btn');
+        const createBtn = document.getElementById('create-btn');
+        const learnSection = document.getElementById('learn-section');
+        const practiceSection = document.getElementById('practice-section');
+        const createSection = document.getElementById('create-section');
+        const feedbackDiv = document.getElementById('feedback');
+        const checkBtn = document.getElementById('check-btn');
+
+        const answers = {
+            q1: 'watched',
+            q2: 'didn\'t play',
+            q3: 'Did',
+            q4: 'listen',
+            q5: 'didn\'t sleep',
+            q6: 'made',
+            q7: 'went',
+            q8: 'didn\'t have'
+        };
+
+        function showSection(section) {
+            learnSection.classList.add('hidden');
+            practiceSection.classList.add('hidden');
+            createSection.classList.add('hidden');
+            learnBtn.classList.remove('active');
+            practiceBtn.classList.remove('active');
+            createBtn.classList.remove('active');
+
+            if (section === 'learn') {
+                learnSection.classList.remove('hidden');
+                learnBtn.classList.add('active');
+            } else if (section === 'practice') {
+                practiceSection.classList.remove('hidden');
+                practiceBtn.classList.add('active');
+            } else if (section === 'create') {
+                createSection.classList.remove('hidden');
+                createBtn.classList.add('active');
+            }
+        }
+
+        learnBtn.addEventListener('click', () => showSection('learn'));
+        practiceBtn.addEventListener('click', () => showSection('practice'));
+        createBtn.addEventListener('click', () => showSection('create'));
+
+        checkBtn.addEventListener('click', () => {
+            const userAnswers = {
+                q1: document.getElementById('q1').value.trim().toLowerCase(),
+                q2: document.getElementById('q2').value.trim().toLowerCase(),
+                q3: document.getElementById('q3').value.trim().toLowerCase(),
+                q4: document.getElementById('q4').value.trim().toLowerCase(),
+                q5: document.getElementById('q5').value.trim().toLowerCase(),
+                q6: document.getElementById('q6').value.trim().toLowerCase(),
+                q7: document.getElementById('q7').value.trim().toLowerCase(),
+                q8: document.getElementById('q8').value.trim().toLowerCase()
+            };
+
+            let correctCount = 0;
+            const totalQuestions = Object.keys(answers).length;
+
+            for (const key in userAnswers) {
+                if (userAnswers[key] === answers[key].toLowerCase()) {
+                    correctCount++;
+                }
+            }
+
+            if (correctCount === totalQuestions) {
+                feedbackDiv.textContent = '🥳 You got them all right! You\'re a Past Simple star!';
+                feedbackDiv.className = 'mt-4 text-center font-bold text-green-500 text-lg md:text-xl';
+            } else {
+                feedbackDiv.innerHTML = `Not bad! You got <span class="text-red-500">${correctCount}</span> out of <span class="text-blue-500">${totalQuestions}</span> correct. Keep practicing!`;
+                feedbackDiv.className = 'mt-4 text-center font-bold text-gray-700 text-lg md:text-xl';
+            }
+        });
+    </script>
+</body>
+</html>
